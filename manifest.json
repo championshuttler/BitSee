@@ -3,7 +3,14 @@
     "name": "BitSee",
     "version": "1.0",
 
-    "description": "Allows you to quickly see the balance of Bitcoin addresses on any web pages"
+    "description": "Allows you to quickly see the balance of Bitcoin addresses on any web pages",
+
+    "icons": {
+        "32": "icons/logo32.png",
+        "48": "icons/logo48x48.png",
+        "120": "icons/logo128x128.png"
+    }
 
 
-}
+
+}:
