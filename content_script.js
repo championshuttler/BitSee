@@ -16,6 +16,14 @@
                         walk(child);
                         child = next;
                     }
+                    break;
+                case 3: // text node
+                    if (node.parantElement.tagName.toLowerCase() != "script") {
+                        processTextNode(node);
+                    }
+                    break;
+
+
             }
         }
     }
