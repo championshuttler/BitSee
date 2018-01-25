@@ -31,4 +31,18 @@
         }
     }
 
+    function nodeInLink(textNode) {
+        var curNode = textNode;
+        while (curNode) {
+            if (curNode.tagName == 'A')
+                return true;
+            else {
+                curNode = curNode.parentNode;
+            }
+            return false;
+
+        }
+
+    }
+
 })
