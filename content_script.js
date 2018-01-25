@@ -18,7 +18,7 @@
                     }
                     break;
                 case 3: // text node
-                    if (node.parantElement.tagName.toLowerCase() != "script") {
+                    if (node.parentElement.tagName.toLowerCase() != "script") {
                         processTextNode(node);
                     }
                     break;
@@ -30,4 +30,5 @@
 
         }
     }
+
 })
