@@ -25,6 +25,9 @@
 
 
             }
+        } catch (err) {
+            console.console.log("Error Bitsee: " + err);
+
         }
     }
 })
