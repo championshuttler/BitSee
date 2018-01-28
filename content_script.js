@@ -1,5 +1,6 @@
 // Author : championshuttler
 // Date : 25th Jan 2018
+// Last Update : 28th Jan 2018
 
 
 (function() {
@@ -7,7 +8,7 @@
         var chil, next;
         try {
             switch (node.nodeType) {
-                case 1: // elemeent
+                case 1: // element
                 case 9: // document
                 case 11: // document fragment
                     child = node.firstChild;
@@ -44,7 +45,7 @@
 
         function addEventListenerByClass(className, event, fn) {
             var list = document.getElementsByClassName(className);
-            for (var i = , len = list.length; i < len; i++) {
+            for (var i = 0, len = list.length; i < len; i++) {
                 list[i].addEventListener(event, fn, false);
             }
         }
