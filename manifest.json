@@ -5,6 +5,10 @@
 
     "description": "Allows you to quickly see the balance of Bitcoin addresses on any web pages",
 
+    "web_accessible_resources": [
+        "icons/logo32.png"
+    ],
+
     "icons": {
         "32": "icons/logo32.png",
         "48": "icons/logo48x48.png",
