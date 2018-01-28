@@ -122,6 +122,47 @@
 
         }
 
+        function bbToggle() {
+            if (this.nextSibling.innerHTML == '') {
+                this.nextSibling.style.display = 'inline';
+                var publicKey = this.parentNode.getAttribute('key');
+                loadData(this.nextSibling, publicKey);
+            } else {
+                if (this.nextSibling.style.display == 'none') {
+                    this.nextSibling.style.display = 'inline';
+                } else {
+                    this.nextSibling.style.display = 'none';
+                }
+            }
+        }
+
+        function addHolderContent(context) {
+            try {
+                var list = context.getElementsByClassName('bbHolder');
+
+                for (var i = 0, len = list.length; i < len; i++) {
+                    var img = document.createElement("img");
+                    img.src = browser.extension.getURL("icons/logo32.png");
+                    img.className = 'bitcoinBalanceIcon';
+                    img.setAttribute('title', 'BitSee');
+                    img.setAttribute('alt', ''); // avoid copying out extension text
+                    img.style.cssText = 'height:1em;vertical-align:-10%;cursor:pointer;margin-left:.5em;display:inline;';
+                    list[i].appendChild(img);
+
+                    var span = document.createElement("span");
+                    span.style.cssText = 'display:none';
+                    span.appendChild(document.createTextNode(''));
+                    list[i].appendChild(span);
+                }
+
+            } catch (err) {
+                console.log("Error BitSee: " + err);
+                return false;
+            }
+        }
+
+
+
 
     }
 
