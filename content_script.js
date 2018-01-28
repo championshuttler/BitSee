@@ -20,7 +20,7 @@
                     break;
             }
         } catch (err) {
-            console.console.log("Error Bitsee: " + err);
+            console.log("Error Bitsee: " + err);
         }
     }
 
@@ -55,7 +55,7 @@
             while (curNode) {
                 if (curNode.tagName == 'A') {
                     var span = document.createElement("span");
-                    span.setAttribute(('key'), spanKey);
+                    span.setAttribute('key', spanKey);
                     span.className = spanClass;
                     span.appendChild(document.createTextNode(''));
                     curNode.parentNode.insertBefore(span, curNode.nextSibling);
@@ -69,13 +69,13 @@
         function loadData(node, publicKey) {
             var myVar = new XMLHttpRequest();
             myVar.onreadystatechange = function() {
-                if (myVar == 4) {
+                if (myVar.readyState == 4) {
                     var status = myVar.status;
                     if (status == 200) {
                         var myReceived = parseInt(myVar.response.total_received) / 100000000;
                         var myBalance = parseInt(myVar.response.final_balance) / 100000000;
-                        node.innerHTML = 'Balance : '
-                        myBalance + 'BTC. Received: ' + myReceived + 'BTC. <a href="https://blockchain.info/address/' + publicKey + '" target="_blank">Blockchain</a>';
+                        node.innerHTML = 'Balance : ' +
+                            myBalance + 'BTC. Received: ' + myReceived + 'BTC. <a href="https://blockchain.info/address/' + publicKey + '" target="_blank">Blockchain</a>';
                     } else {
                         node.innerHTML = ' <a href="https://blockchain.info/address/' + publicKey + '" target="_blank">Blockchain</a> info not available.';
                         console.log('Blockchain info not available. Error ' + status + '.');
@@ -97,16 +97,16 @@
                     var status = myVar.status;
                     if (status == 200) {
                         var myBalance = parseInt(myVar.response) / 100000000;
-                        loadBlockExplorerData(node, publicKey, myBalance);
+                        loadBlockExplorerReceived(node, publicKey, myBalance);
                     } else {
                         node.innerHTML = ' <a href="https://blockexplorer.com/address/' + publicKey + '" target="_blank">BlockExplorer</a> not available.';
                         console.log('BlockExplorer not available. Error ' + status + '.');
                     }
                 }
             }
-            var url = 'https://blockexplorer.com/q/adressbalance/' + publicKey;
+            var url = 'https://blockexplorer.com/q/addressbalance/' + publicKey;
 
-            myVar.open("Get", url, true);
+            myVar.open("GET", url, true);
             myVar.send();
         }
 
@@ -201,7 +201,7 @@
         function observeMutations() {
             target = document.body;
             var observer = new MutationObserver(function(mutations) {
-                mutations.forEach(function(mutations) {
+                mutations.forEach(function(mutation) {
                     target = mutation.addedNodes[0];
                     main(target);
                 });
