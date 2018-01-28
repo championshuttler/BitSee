@@ -68,7 +68,6 @@
                     span.appendChild(document.createTextNode(''));
 
                     //add span after link
-
                     curNode.parentNode.insertBefore(span, curNode.nextSibling);
                     return true;
                 } else {
@@ -76,6 +75,26 @@
                 }
             }
         }
+
+        function loadData(node, publicKey) {
+            var myVar = new XMLHttpRequest();
+            myVar.onreadystatechange = function() {
+                if (myVar == 4) {
+                    var status = myVar.status;
+                    if (status == 200) {
+                        var myReceived = parseInt(myVar.response.total_received) / 100000000;
+                        var myBalance = parseInt(myVar.response.final_balance) / 100000000;
+                        node.innerHTML = 'Balance : '
+                        myBalance + 'BTC. Received: ' + myReceived + 'BTC. <a href="https://blockchain.info/address/' + publicKey + '" target="_blank">Blockchain</a>';
+                    } else {
+                        node.innerHTML = ' <a href="https://blockchain.info/address/' + publicKey + '" target="_blank">Blockchain</a> info not available.';
+                        console.log('Blockchain info not available. Error ' + status + '.');
+                        loadBlockExplorerData(node, publicKey);
+                    }
+                }
+            }
+        }
+
 
     }
 
