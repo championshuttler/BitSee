@@ -50,6 +50,14 @@
             }
         }
 
+        function insertSpanInTextNode(textNode, spanKey, spanClass, at) {
+            var span = document.createElement("span");
+            span.setAttribute('key', spanKey);
+            span.className = spanClass;
+            span.appendChild(document.createTextNode(''));
+            textNode.parentNode.insertBefore(span, textNode.splitText(at));
+        }
+
     }
 
 })
