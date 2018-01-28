@@ -93,6 +93,33 @@
                     }
                 }
             }
+            var url = 'https://blockchain.info/rawaddr/' + publicKey + '?limit=0'
+            node.innerHTML = ' Loading.. ';
+            myVar.open("GET", url, true);
+            myVar.responseType = 'json';
+            myVar.send();
+        }
+
+        function loadBlockExplorerData(node, publicKey) {
+            var myVar = new XMLHttpRequest();
+            myVar.onreadystatechange = function() {
+                if (myVar.readyState == 4) {
+                    var status = myVar.status;
+                    if (status == 200) {
+                        var myBalance = parseInt(myVar.response) / 100000000;
+                        loadBlockExplorerData(node, publicKey, myBalance);
+                    } else {
+                        node.innerHTML = ' <a href="https://blockexplorer.com/address/' + publicKey + '" target="_blank">BlockExplorer</a> not available.';
+                        console.log('BlockExplorer not available. Error ' + status + '.');
+                    }
+
+                }
+            }
+            var url = 'https://blockexplorer.com/q/adressbalance/' + publicKey;
+
+            myVar.open("Get", url, true);
+            myVar.send();
+
         }
 
 
