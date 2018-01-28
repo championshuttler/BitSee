@@ -58,6 +58,25 @@
             textNode.parentNode.insertBefore(span, textNode.splitText(at));
         }
 
+        function insertSpanAfterLink(textNode, spanKey, spanClass) {
+            var curNode = textNode;
+            while (curNode) {
+                if (curNode.tagName == 'A') {
+                    var span = document.createElement("span");
+                    span.setAttribute(('key'), spanKey);
+                    span.className = spanClass;
+                    span.appendChild(document.createTextNode(''));
+
+                    //add span after link
+
+                    curNode.parentNode.insertBefore(span, curNode.nextSibling);
+                    return true;
+                } else {
+                    curNode = curNode.parentNode;
+                }
+            }
+        }
+
     }
 
 })
