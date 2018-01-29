@@ -188,7 +188,7 @@
                     var curNode = textNode;
 
                     while ((myArray = anotherBitcoinHash.exec(bitValue)) !== null) {
-                        insertSpanAfterLink(curNode.myArray[0], 'bbHolder', anotherBitcoinHash.lastIndex - prev);
+                        insertSpanInTextNode(curNode.myArray[0], 'bbHolder', anotherBitcoinHash.lastIndex - prev);
                         prev = anotherBitcoinHash.lastIndex;
                         counter = counter + 1;
                         curNode = textNode.parentNode.childNodes[2 * counter];
