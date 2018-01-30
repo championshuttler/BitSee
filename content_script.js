@@ -74,7 +74,7 @@
                 if (status == 200) {
                     var myReceived = parseInt(myVar.response.total_received) / 100000000;
                     var myBalance = parseInt(myVar.response.final_balance) / 100000000;
-                    node.innerHTML = ' Balance: ' + myBalance + ' BTC. Received: ' + myReceived + ' BTC. <a href="https://blockchain.info/address/' + publicKey + '" target="_blank">Blockchain</a>';
+                    node.innerHTML = ' Balance: ' + myBalance + ' BTC Received: ' + myReceived + ' BTC <a href="https://blockchain.info/address/' + publicKey + '" target="_blank"></a>';
                 } else {
                     node.innerHTML = ' <a href="https://blockchain.info/address/' + publicKey + '" target="_blank">Blockchain</a> info not available.';
                     console.log('Blockchain info not available. Error ' + status + '.');
