@@ -2,7 +2,7 @@
 
     "manifest_version": 2,
     "name": "BitSee",
-    "version": "1.0",
+    "version": "0.5",
     "description": "Allows you to quickly see the balance of Bitcoin addresses on any web pages",
     "permissions": ["https://blockchain.info/", "https://blockexplorer.com/"],
     "web_accessible_resources": [
