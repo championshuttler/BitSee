@@ -3,9 +3,9 @@
         var child, next;
         try {
             switch (node.nodeType) {
-                case 1: // element
-                case 9: // document
-                case 11: // document fragment
+                case 1: // Element
+                case 9: // Document
+                case 11: // Document fragment
                     child = node.firstChild;
                     while (child) {
                         next = child.nextSibling;
@@ -13,7 +13,7 @@
                         child = next;
                     }
                     break;
-                case 3: // text node
+                case 3:
                     if (node.parentElement.tagName.toLowerCase() != "script") {
                         processTextNode(node);
                     }
@@ -74,8 +74,7 @@
                 if (status == 200) {
                     var myReceived = parseInt(myVar.response.total_received) / 100000000;
                     var myBalance = parseInt(myVar.response.final_balance) / 100000000;
-                    node.innerHTML = 'Balance : ' +
-                        myBalance + 'BTC. Received: ' + myReceived + 'BTC. <a href="https://blockchain.info/address/' + publicKey + '" target="_blank">Blockchain</a>';
+                    node.innerHTML = ' Balance: ' + myBalance + ' BTC. Received: ' + myReceived + ' BTC. <a href="https://blockchain.info/address/' + publicKey + '" target="_blank">Blockchain</a>';
                 } else {
                     node.innerHTML = ' <a href="https://blockchain.info/address/' + publicKey + '" target="_blank">Blockchain</a> info not available.';
                     console.log('Blockchain info not available. Error ' + status + '.');
@@ -84,7 +83,8 @@
             }
         }
         var url = 'https://blockchain.info/rawaddr/' + publicKey + '?limit=0'
-        node.innerHTML = ' Loading.. ';
+        node.innerHTML = ' Loading...';
+
         myVar.open("GET", url, true);
         myVar.responseType = 'json';
         myVar.send();
@@ -164,35 +164,35 @@
             }
 
         } catch (err) {
-            console.log("Error BitSee: " + err);
+            console.log("Error Bitsee: " + err);
             return false;
         }
     }
 
     function processTextNode(textNode) {
-        var bitcoinHash = /\b[13][1-9A-HJ-NP-Za-km-z]{26.33}\b/g
-        var bitValue = textNode.nodeValue;
 
-        if (bitcoinHash.test(val)) {
-            if (nodeInLink(textNode)) {
-                var publicKeys = bitValue.match(bitcoinHash);
+        var bitcoinHash = /\b[13][1-9A-HJ-NP-Za-km-z]{26,33}\b/g
+        var val = textNode.nodeValue;
+
+        if (bitcoinHash.test(val)) { // exclude case 1
+            if (nodeInLink(textNode)) { // case 3
+                var publicKeys = val.match(bitcoinHash);
                 var publicKey = publicKeys[0];
 
                 insertSpanAfterLink(textNode, publicKey, 'bbHolder');
-            } else {
+            } else { // case 2
                 var anotherBitcoinHash = /\b[13][1-9A-HJ-NP-Za-km-z]{26,33}\b/g;
+
 
                 var myArray;
                 var prev = 0;
                 var counter = 0;
                 var curNode = textNode;
-
-                while ((myArray = anotherBitcoinHash.exec(bitValue)) !== null) {
-                    insertSpanInTextNode(curNode.myArray[0], 'bbHolder', anotherBitcoinHash.lastIndex - prev);
+                while ((myArray = anotherBitcoinHash.exec(val)) !== null) {
+                    insertSpanInTextNode(curNode, myArray[0], 'bbHolder', anotherBitcoinHash.lastIndex - prev);
                     prev = anotherBitcoinHash.lastIndex;
                     counter = counter + 1;
                     curNode = textNode.parentNode.childNodes[2 * counter];
-
                 }
             }
         }
@@ -215,9 +215,9 @@
         addHolderContent(target);
         addEventListenerByClass('bitcoinBalanceIcon', 'click', bbToggle);
 
+
     }
     main(document.body);
     observeMutations();
-
 
 })();
