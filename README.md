@@ -20,6 +20,9 @@ Steps to install a local Firefox add-On:
 
 Enjoy your BitSee experience :)
 
+
+You can install this addons from [here](https://addons.mozilla.org/en-US/firefox/addon/bitsee1/)
+
 How to use
 ----------
 
