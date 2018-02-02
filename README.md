@@ -29,3 +29,6 @@ How to use
 1. Go to a website that mentions a Bitcoin address.
 2. You'll see a small info icon next to the Bitcoin address. Click it.
 
+
+If you like it , you can contribute to my Bitcoin Address ;)
+
