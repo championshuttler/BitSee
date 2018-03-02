@@ -3,9 +3,9 @@
         var child, next;
         try {
             switch (node.nodeType) {
-                case 1: // Element
-                case 9: // Document
-                case 11: // Document fragment
+                case 1:
+                case 9:
+                case 11:
                     child = node.firstChild;
                     while (child) {
                         next = child.nextSibling;
@@ -153,7 +153,7 @@
                 img.src = browser.extension.getURL("icons/logo32.png");
                 img.className = 'bitcoinBalanceIcon';
                 img.setAttribute('title', 'BitSee');
-                img.setAttribute('alt', ''); // avoid copying out extension text
+                img.setAttribute('alt', '');
                 img.style.cssText = 'height:1em;vertical-align:-10%;cursor:pointer;margin-left:.5em;display:inline;';
                 list[i].appendChild(img);
 
@@ -174,13 +174,13 @@
         var bitcoinHash = /\b[13][1-9A-HJ-NP-Za-km-z]{26,33}\b/g
         var val = textNode.nodeValue;
 
-        if (bitcoinHash.test(val)) { // exclude case 1
-            if (nodeInLink(textNode)) { // case 3
+        if (bitcoinHash.test(val)) {
+            if (nodeInLink(textNode)) {
                 var publicKeys = val.match(bitcoinHash);
                 var publicKey = publicKeys[0];
 
                 insertSpanAfterLink(textNode, publicKey, 'bbHolder');
-            } else { // case 2
+            } else {
                 var anotherBitcoinHash = /\b[13][1-9A-HJ-NP-Za-km-z]{26,33}\b/g;
 
 
