@@ -1,4 +1,5 @@
 # [BitSee](https://addons.mozilla.org/en-US/firefox/addon/bitsee1/)
+[<img align="right" src="https://addons.cdn.mozilla.net/static/img/addons-buttons/AMO-button_2.png">](https://addons.mozilla.org/firefox/addon/bitsee1)
 
 A Mozilla Add-On allows you to quickly see the balance of Bitcoin addresses on any web pages.
 
