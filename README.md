@@ -35,3 +35,4 @@ How to use
 If you like it , you can contribute to my Bitcoin Address ;)
 
 
+<a href="http://example.com/" target="_blank">Hello, world!</a>
